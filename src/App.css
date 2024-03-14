@@ -1,0 +1,14 @@
+/* En un archivo CSS separado o en línea si prefieres */
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://th.bing.com/th/id/R.0b3029c9c37749c563dd288de3d7293e?rik=8jv8Zv4owxCowg&riu=http%3a%2f%2fimagenesparacelulares.net%2fwp-content%2fuploads%2f2014%2f09%2f442538.jpg&ehk=R%2biQQcOCWqu6mhQXvgcKqYp1%2fSZLYq8MaExTdotRFw8%3d&risl=&pid=ImgRaw&r=0'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta de tu imagen */
+    background-size: cover; /* Hace que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen en la pantalla */
+    font-family: Arial, sans-serif; /* Estilo de fuente de respaldo */
+  }
+ 
+  .transparent-card {
+    background-color: rgba(255, 255, 255, 0.5); /* Change the alpha value as needed */
+  }
+  

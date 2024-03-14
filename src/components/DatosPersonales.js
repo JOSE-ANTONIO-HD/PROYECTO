@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Axios from "../services/Axios";
+import "./styles.css"; // Importa tu archivo de estilos aquí
 
 export default function DatosPersonales() {
   const valores = {
@@ -33,47 +34,47 @@ export default function DatosPersonales() {
   };
 
   return (
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Datos Personales</h5>
-        <h6 class="card-subtitle mb-2 text-body-secondary"></h6>
+    <div className="card"> {/* Cambiado class por className */}
+      <div className="card-body"> {/* Cambiado class por className */}
+        <h5 className="card-title">Datos Personales</h5> {/* Cambiado class por className */}
+        <h6 className="card-subtitle mb-2 text-body-secondary"></h6> {/* Cambiado class por className */}
 
-        <form class="row g-3 needs-validation" onSubmit={onSubmit} novalidate>
-          <div class="col-md-12">
+        <form className="row g-3 needs-validation" onSubmit={onSubmit} noValidate> {/* Cambiado class por className */}
+          <div className="col-md-12">
             <input
               name="nombre"
               type="text"
-              class="form-control"
+              className="form-control"
               id="validationCustom01"
               value={datos.nombre}
               onChange={onChange}
               placeholder="Nombre completo"
               required
             />
-            <div class="valid-feedback">Looks good!</div>
+            <div className="valid-feedback">Looks good!</div>
           </div>
-          <div class="col-md-12">
+          <div className="col-md-12">
             <input
               name="direccion"
               type="text"
-              class="form-control"
+              className="form-control"
               id="validationCustom02"
               value={datos.direccion}
               onChange={onChange}
               placeholder="Dirección"
               required
             />
-            <div class="valid-feedback">Looks good!</div>
+            <div className="valid-feedback">Looks good!</div>
           </div>
-          <div class="col-md-12">
-            <div class="input-group has-validation">
-              <span class="input-group-text" id="inputGroupPrepend">
+          <div className="col-md-12">
+            <div className="input-group has-validation">
+              <span className="input-group-text" id="inputGroupPrepend">
                 @
               </span>
               <input
                 type="text"
                 name="correo"
-                class="form-control"
+                className="form-control"
                 id="validationCustomUsername"
                 placeholder="Correo"
                 value={datos.correo}
@@ -81,14 +82,14 @@ export default function DatosPersonales() {
                 aria-describedby="inputGroupPrepend"
                 required
               />
-              <div class="invalid-feedback">Please choose a username.</div>
+              <div className="invalid-feedback">Please choose a username.</div>
             </div>
           </div>
-          <div class="col-md-12">
+          <div className="col-md-12">
             <input
               type="text"
               name="estado"
-              class="form-control"
+              className="form-control"
               id="validationCustom03"
               placeholder="Estado"
               value={datos.estado}
@@ -96,11 +97,11 @@ export default function DatosPersonales() {
               required
             />
           </div>
-          <div class="col-md-12">
+          <div className="col-md-12">
             <input
               type="text"
               name="telefono"
-              class="form-control"
+              className="form-control"
               id="validationCustom03"
               placeholder="Telefono"
               value={datos.telefono}
@@ -108,8 +109,9 @@ export default function DatosPersonales() {
               required
             />
           </div>
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button class="btn btn-primary" type="submit">
+          
+          <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button className="btn btn-primary" type="submit">
               Enviar
             </button>
           </div>

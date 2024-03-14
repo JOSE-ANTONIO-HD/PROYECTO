@@ -32,9 +32,10 @@ function Tabla() {
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Telefono</th>
-      <th scope="col">Dirección</th>
+      <th scope="col">producto</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">cantidad</th>
+      <th scope="col">fecha</th>
       <th scope="col">Modificar</th>
       <th scope="col">Eliminar</th>
     </tr>

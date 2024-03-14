@@ -38,7 +38,7 @@ export default function BarraMenu({ backgroundColor }) {
                 <li><Link className="dropdown-item" to='/datos'>Datos Personales</Link></li>
                 <li><Link className="dropdown-item" to="/tabla">Lista personal</Link></li>
                 <li><hr className="dropdown-divider"/></li>
-                <li><a className="dropdown-item" href="#">Something else here</a></li>
+                <li><Link  className="dropdown-item" to="/proveedores">proveedores</Link></li>
               </ul>
             </li>
             <li className="nav-item">
