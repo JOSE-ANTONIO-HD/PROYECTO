@@ -36,7 +36,7 @@ export default function DatosPersonales() {
   return (
     <div className="card"> {/* Cambiado class por className */}
       <div className="card-body"> {/* Cambiado class por className */}
-        <h5 className="card-title">Datos Personales</h5> {/* Cambiado class por className */}
+        <h5 className="card-title">agregar producto</h5> {/* Cambiado class por className */}
         <h6 className="card-subtitle mb-2 text-body-secondary"></h6> {/* Cambiado class por className */}
 
         <form className="row g-3 needs-validation" onSubmit={onSubmit} noValidate> {/* Cambiado class por className */}
