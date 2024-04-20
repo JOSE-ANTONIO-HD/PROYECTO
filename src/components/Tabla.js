@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from '../services/Axios';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Modal } from 'react-bootstrap'; // Importa el componente Modal de Bootstrap
 
 function Tabla() {
-    const [listaDatos,setListaDatos] = useState([]);
-
+    const [listaDatos, setListaDatos] = useState([]);
+    const [showModal, setShowModal] = useState(false); // Estado para controlar la visibilidad de la ventana emergente
     const navigate = useNavigate();
 
     const buscarDatos = async () => {
@@ -14,9 +15,20 @@ function Tabla() {
 
     const Delete = async (id) => {
         const eliminar = await Axios.delete(`/datos/delete/${id}`)
-            .then(() => alert("Datos eliminados"));
+            .then(() => {
+                alert("Datos eliminados");
+                openModal(); // Abre la ventana emergente al eliminar los datos
+            });
         buscarDatos();
     }
+
+    const openModal = () => {
+        setShowModal(true);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+    };
 
     useEffect(() => {
         buscarDatos();
@@ -24,6 +36,19 @@ function Tabla() {
 
     return (
         <div>
+            {/* Agrega el Modal */}
+            <Modal show={showModal} onHide={closeModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Ventana emergente</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Contenido de la ventana emergente
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className="btn btn-secondary" onClick={closeModal}>Cerrar</button>
+                </Modal.Footer>
+            </Modal>
+
             <table className="table">
                 <thead>
                     <tr>
