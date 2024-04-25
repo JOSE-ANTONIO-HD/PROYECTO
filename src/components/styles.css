@@ -1,6 +1,6 @@
 .card {
     background-color: rgba(255, 255, 255, 0.373) !important; /* Establece un color de fondo con transparencia */
-    border: none; /* Elimina el borde si lo hay */
-    margin: 20px; /* Agrega márgenes de 20px */
+    border: none !important; /* Elimina el borde si lo hay */
+    margin: 20px !important; /* Agrega márgenes de 20px */
   }
   

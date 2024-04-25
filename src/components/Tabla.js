@@ -3,6 +3,7 @@ import Axios from '../services/Axios';
 import { useNavigate } from "react-router-dom";
 import { Modal } from 'react-bootstrap'; // Importa el componente Modal de Bootstrap
 
+
 function Tabla() {
     const [listaDatos, setListaDatos] = useState([]);
     const [showModal, setShowModal] = useState(false); // Estado para controlar la visibilidad de la ventana emergente
@@ -14,9 +15,8 @@ function Tabla() {
     }
 
     const Delete = async (id) => {
-        const eliminar = await Axios.delete(`/datos/delete/${id}`)
+        await Axios.delete(`/datos/delete/${id}`)
             .then(() => {
-                alert("Datos eliminados");
                 openModal(); // Abre la ventana emergente al eliminar los datos
             });
         buscarDatos();
@@ -34,53 +34,64 @@ function Tabla() {
         buscarDatos();
     }, [])
 
+    // Función para navegar a la página de agregar datos
+    const navigateToAddData = () => {
+        navigate("/datos/agregar"); // Asegúrate de ajustar la ruta según tu configuración
+    }
+
     return (
-        <div>
+        <div style={{ paddingRight: '12px' }}>
+          <div>
             {/* Agrega el Modal */}
             <Modal show={showModal} onHide={closeModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Ventana emergente</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    Contenido de la ventana emergente
-                </Modal.Body>
-                <Modal.Footer>
-                    <button className="btn btn-secondary" onClick={closeModal}>Cerrar</button>
-                </Modal.Footer>
+              <Modal.Header closeButton>
+                <Modal.Title>Datos eliminados</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                Los datos han sido eliminados exitosamente.
+              </Modal.Body>
+              <Modal.Footer>
+                <button className="btn btn-secondary" onClick={closeModal}>Cerrar</button>
+              </Modal.Footer>
             </Modal>
-
+      
+            <div className="mb-3">
+              <button className="btn btn-primary" onClick={navigateToAddData}>Agregar</button>
+            </div>
+      
             <table className="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">producto</th>
-                        <th scope="col">Tipo</th>
-                        <th scope="col">cantidad</th>
-                        <th scope="col">fecha</th>
-                        <th scope="col">Modificar</th>
-                        <th scope="col">Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {listaDatos.map((datos, index) => (
-                        <tr key={datos._id}>
-                            <th scope="row">{index + 1}</th>
-                            <td>{datos.nombre}</td>
-                            <td>{datos.telefono}</td>
-                            <td>{datos.direccion}</td>
-                            <td>{new Date().toLocaleDateString()}</td>
-                            <td>
-                                <button type="button" className="btn btn-info" onClick={() => navigate(`/datos/${datos._id}`)}>Modificar</button>
-                            </td>
-                            <td>
-                                <button type="button" className="btn btn-danger" onClick={() => Delete(datos._id)}>Eliminar</button>
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">producto</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">cantidad</th>
+                  <th scope="col">fecha</th>
+                  <th scope="col">Modificar</th>
+                  <th scope="col">Eliminar</th>
+                </tr>
+              </thead>
+              <tbody>
+                {listaDatos.map((datos, index) => (
+                  <tr key={datos._id}>
+                    <th scope="row">{index + 1}</th>
+                    <td>{datos.nombre}</td>
+                    <td>{datos.telefono}</td>
+                    <td>{datos.direccion}</td>
+                    <td>{new Date().toLocaleDateString()}</td>
+                    <td>
+                      <button type="button" className="btn btn-info" onClick={() => navigate(`/datos/${datos._id}`)}>Modificar</button>
+                    </td>
+                    <td>
+                      <button type="button" className="btn btn-danger" onClick={() => Delete(datos._id)}>Eliminar</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
+          </div>
         </div>
-    );
+      );
 }
 
 export default Tabla;

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Axios from "../services/Axios";
-import "./styles.css"; // Importa tu archivo de estilos aquí
+import { Link } from "react-router-dom";
+import "./styles.css";
 
 export default function DatosPersonales() {
   const valores = {
@@ -12,34 +13,73 @@ export default function DatosPersonales() {
   };
 
   const [datos, setDatos] = useState(valores);
+  const [datosTabla, setDatosTabla] = useState([]);
 
-  //Funcion para obtener los inputs
+  // Obtener datos de la tabla cuando se monta el componente
+  useEffect(() => {
+    obtenerDatosTabla();
+  }, []);
+
+  // Función para obtener los datos de la tabla
+  const obtenerDatosTabla = () => {
+    // Aquí supones que tienes una función Axios para obtener los datos de la tabla
+    Axios.get("/datos/getData").then((response) => {
+      setDatosTabla(response.data);
+    }).catch((error) => {
+      console.error("Error al obtener datos de la tabla:", error);
+    });
+  };
+
+  // Función para manejar el cambio en los inputs
   const onChange = (e) => {
     const { name, value } = e.target;
     setDatos({ ...datos, [name]: value });
   };
 
-  const GuardarDatos = () => {
-    Axios.post("/datos/saveData", datos).then(() => {
-      console.log("Datos enviados correctamente");
-    });
+  // Función para guardar los datos
+  const guardarDatos = () => {
+    // Verificar si la información ya existe en la tabla
+    const existe = datosTabla.some((item) => (
+      item.nombre === datos.nombre && 
+      item.direccion === datos.direccion &&
+      item.telefono === datos.telefono
+    ));
+
+    if (existe) {
+      // Si existe, sumar la cantidad a la entrada existente
+      // Aquí asumimos que la cantidad a sumar está en la variable 'cantidad'
+      Axios.put("/datos/sumarCantidad", datos).then(() => {
+        console.log("Cantidad sumada correctamente");
+        // Actualizar los datos de la tabla después de sumar la cantidad
+        obtenerDatosTabla();
+      }).catch((error) => {
+        console.error("Error al sumar cantidad:", error);
+      });
+    } else {
+      // Si no existe, agregar una nueva entrada
+      Axios.post("/datos/saveData", datos).then(() => {
+        console.log("Datos guardados correctamente");
+        // Actualizar los datos de la tabla después de guardar
+        obtenerDatosTabla();
+      }).catch((error) => {
+        console.error("Error al guardar datos:", error);
+      });
+    }
   };
 
-  //Funcion para el onsubmit
-
+  // Función para manejar el envío del formulario
   const onSubmit = (e) => {
     e.preventDefault();
-    // console.log(datos);
-    GuardarDatos();
+    guardarDatos();
   };
 
   return (
-    <div className="card"> {/* Cambiado class por className */}
-      <div className="card-body"> {/* Cambiado class por className */}
-        <h5 className="card-title">agregar producto</h5> {/* Cambiado class por className */}
-        <h6 className="card-subtitle mb-2 text-body-secondary"></h6> {/* Cambiado class por className */}
+    <div className="card">
+      <div className="card-body">
+        <h5 className="card-title">AGREGAR PRODUCTO</h5>
+        <h6 className="card-subtitle mb-2 text-body-secondary"></h6>
 
-        <form className="row g-3 needs-validation" onSubmit={onSubmit} noValidate> {/* Cambiado class por className */}
+        <form className="row g-3 needs-validation" onSubmit={onSubmit} noValidate>
           <div className="col-md-12">
             <input
               name="nombre"
@@ -48,54 +88,10 @@ export default function DatosPersonales() {
               id="validationCustom01"
               value={datos.nombre}
               onChange={onChange}
-              placeholder="Nombre completo"
+              placeholder="NOMBRE DEL PRODUCTO"
               required
             />
             <div className="valid-feedback">Looks good!</div>
-          </div>
-          <div className="col-md-12">
-            <input
-              name="direccion"
-              type="text"
-              className="form-control"
-              id="validationCustom02"
-              value={datos.direccion}
-              onChange={onChange}
-              placeholder="Dirección"
-              required
-            />
-            <div className="valid-feedback">Looks good!</div>
-          </div>
-          <div className="col-md-12">
-            <div className="input-group has-validation">
-              <span className="input-group-text" id="inputGroupPrepend">
-                @
-              </span>
-              <input
-                type="text"
-                name="correo"
-                className="form-control"
-                id="validationCustomUsername"
-                placeholder="Correo"
-                value={datos.correo}
-                onChange={onChange}
-                aria-describedby="inputGroupPrepend"
-                required
-              />
-              <div className="invalid-feedback">Please choose a username.</div>
-            </div>
-          </div>
-          <div className="col-md-12">
-            <input
-              type="text"
-              name="estado"
-              className="form-control"
-              id="validationCustom03"
-              placeholder="Estado"
-              value={datos.estado}
-              onChange={onChange}
-              required
-            />
           </div>
           <div className="col-md-12">
             <input
@@ -109,11 +105,25 @@ export default function DatosPersonales() {
               required
             />
           </div>
-          
+          <div className="col-md-12">
+            <input
+              name="direccion"
+              type="text"
+              className="form-control"
+              id="validationCustom02"
+              value={datos.direccion}
+              onChange={onChange}
+              placeholder="DIRECCION"
+              required
+            />
+            <div className="valid-feedback">Looks good!</div>
+          </div>
+
           <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button className="btn btn-primary" type="submit">
+            <button className="btn btn-primary me-md-2" type="submit">
               Enviar
             </button>
+            <Link to="/tabla" className="btn btn-secondary">Regresar</Link>
           </div>
         </form>
       </div>
