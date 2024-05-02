@@ -31,7 +31,10 @@ export default function BarraMenu({ backgroundColor }) {
           </Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="/lista" style={textColorStyle}>Datos</Link>
+          <Link className="nav-link" to="/lista" style={textColorStyle}>INVENTARIO</Link>
+        </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/Tabla_p" style={textColorStyle}>PROVEEDOR</Link>
         </li>
         <li className="nav-item dropdown">
           <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={textColorStyle}>
@@ -39,7 +42,7 @@ export default function BarraMenu({ backgroundColor }) {
           </Link>
           <ul className="dropdown-menu">
             <li><Link className="dropdown-item" to='/'>Datos Personales</Link></li>
-            <li><Link className="dropdown-item" to="/tabla">Lista personal</Link></li>
+            <li><Link className="dropdown-item" to="/">Lista personal</Link></li>
             <li><hr className="dropdown-divider"/></li>
             <li><a className="dropdown-item" href="#">Something else here</a></li>
           </ul>

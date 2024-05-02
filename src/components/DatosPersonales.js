@@ -5,11 +5,10 @@ import "./styles.css";
 
 export default function DatosPersonales() {
   const valores = {
-    nombre: "",
-    direccion: "",
-    correo: "",
-    estado: "",
-    telefono: "",
+    producto: "",
+    cantidad: "",
+    precio_unitario: "",
+    proveedor: "",
   };
 
   const [datos, setDatos] = useState(valores);
@@ -40,9 +39,10 @@ export default function DatosPersonales() {
   const guardarDatos = () => {
     // Verificar si la información ya existe en la tabla
     const existe = datosTabla.some((item) => (
-      item.nombre === datos.nombre && 
-      item.direccion === datos.direccion &&
-      item.telefono === datos.telefono
+      item.producto === datos.producto && 
+      item.cantidad === datos.cantidad &&
+      item.precio_unitario === datos.precio_unitario && 
+      item.proveedor === datos.proveedor 
     ));
 
     if (existe) {
@@ -82,11 +82,11 @@ export default function DatosPersonales() {
         <form className="row g-3 needs-validation" onSubmit={onSubmit} noValidate>
           <div className="col-md-12">
             <input
-              name="nombre"
+              name="producto"
               type="text"
               className="form-control"
               id="validationCustom01"
-              value={datos.nombre}
+              value={datos.producto}
               onChange={onChange}
               placeholder="NOMBRE DEL PRODUCTO"
               required
@@ -95,35 +95,47 @@ export default function DatosPersonales() {
           </div>
           <div className="col-md-12">
             <input
-              type="text"
-              name="telefono"
+              type="number"
+              name="cantidad"
               className="form-control"
-              id="validationCustom03"
-              placeholder="Telefono"
-              value={datos.telefono}
+              id="validationCustom02"
+              placeholder="cantidad"
+              value={datos.cantidad}
               onChange={onChange}
               required
             />
           </div>
           <div className="col-md-12">
             <input
-              name="direccion"
-              type="text"
+              type="number"
+              name="precio_unitario"
               className="form-control"
-              id="validationCustom02"
-              value={datos.direccion}
+              id="validationCustom03"
+              placeholder="precio unitario"
+              value={datos.precio_unitario}
               onChange={onChange}
-              placeholder="DIRECCION"
               required
             />
-            <div className="valid-feedback">Looks good!</div>
+          </div>
+
+          <div className="col-md-12">
+            <input
+              type="number"
+              name="proveedor"
+              className="form-control"
+              id="validationCustom04"
+              placeholder="proveedor"
+              value={datos.nombre}
+              onChange={onChange}
+              required
+            />
           </div>
 
           <div className="d-grid gap-2 d-md-flex justify-content-md-end">
             <button className="btn btn-primary me-md-2" type="submit">
               Enviar
             </button>
-            <Link to="/tabla" className="btn btn-secondary">Regresar</Link>
+            <Link to="/lista" className="btn btn-secondary">Regresar</Link>
           </div>
         </form>
       </div>

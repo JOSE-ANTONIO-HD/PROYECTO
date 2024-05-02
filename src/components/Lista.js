@@ -3,7 +3,6 @@ import Axios from '../services/Axios';
 import { useNavigate } from "react-router-dom";
 import { Modal } from 'react-bootstrap'; // Importa el componente Modal de Bootstrap
 
-
 function Tabla() {
     const [listaDatos, setListaDatos] = useState([]);
     const [showModal, setShowModal] = useState(false); // Estado para controlar la visibilidad de la ventana emergente
@@ -63,9 +62,11 @@ function Tabla() {
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">producto</th>
-                  <th scope="col">Tipo</th>
-                  <th scope="col">cantidad</th>
+                  <th scope="col">PRODUCTO</th>
+                  <th scope="col">CANTIDAD</th>
+                  <th scope="col">PRECIO UNITARIO</th>
+                  <th scope="col">VALOR TOTAL</th>
+                  <th scope="col">PROVEEDOR</th>
                   <th scope="col">fecha</th>
                   <th scope="col">Modificar</th>
                   <th scope="col">Eliminar</th>
@@ -75,9 +76,11 @@ function Tabla() {
                 {listaDatos.map((datos, index) => (
                   <tr key={datos._id}>
                     <th scope="row">{index + 1}</th>
-                    <td>{datos.nombre}</td>
-                    <td>{datos.telefono}</td>
-                    <td>{datos.direccion}</td>
+                    <td>{datos.producto}</td>
+                    <td>{datos.cantidad}</td>
+                    <td>{datos.precio_unitario}</td>
+                    <td>{datos.cantidad * datos.precio_unitario}</td> {/* Calcular valor total */}
+                    <td>{datos.nombre}</td> {/* Corregí la etiqueta tp a td */}
                     <td>{new Date().toLocaleDateString()}</td>
                     <td>
                       <button type="button" className="btn btn-info" onClick={() => navigate(`/datos/${datos._id}`)}>Modificar</button>
