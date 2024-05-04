@@ -29,12 +29,6 @@ function Tabla_p() {
         setShowModal(false);
     };
 
-    const generarIDProveedor = () => {
-        // Generar un número aleatorio de 10 dígitos
-        const randomNumber = Math.floor(1000000000 + Math.random() * 9000000000);
-        return randomNumber.toString().substring(0, 10); // Asegurar que tenga exactamente 10 dígitos
-    };
-
     useEffect(() => {
         buscarTabla_p();
     }, []);
@@ -77,7 +71,7 @@ function Tabla_p() {
                   <tr key={proveedor._id}>
                     <th scope="row">{index + 1}</th>
                     <td>{proveedor.nombre}</td>
-                    <td>{generarIDProveedor()}</td> {/* Mostrar el ID generado */}
+                    <td>{proveedor._id}</td> {/* Mostrar la ID del proveedor */}
                     <td>{proveedor.correo}</td>
                     <td>{proveedor.telefono}</td>
                     <td>{new Date().toLocaleDateString()}</td>
