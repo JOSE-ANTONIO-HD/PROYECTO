@@ -1,0 +1,24 @@
+.auth{
+    background-image: url();
+    min-height: 100vh;
+    background-position: center;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 100px;
+
+    &__forms{
+        width: 400px !important;
+        .menu{
+            .item{
+                width: 100%;
+                justify-content: center;
+                background-color: #fff;
+                border-radius: 0 !important;
+                border-top: 4px grey !important;
+                font-size: 18px;
+            }
+        }
+    }
+}
