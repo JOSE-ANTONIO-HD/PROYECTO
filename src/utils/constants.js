@@ -5,10 +5,11 @@ export const ENV ={
     BASE_API:`https://${SERVER_IP}/api`,
     API_ROUTES:{
         LOGIN:'auth/login',
-        USER_ME:'userme'
-    }
+        USER_ME:'userme',
+        REFRESHTOKEN:"auth/refreshtoken",
+    },
     JWT:{
-        ACCES: "access",
+        ACCESS: "access",
         REFRESH: "refresh"
     }
 }
