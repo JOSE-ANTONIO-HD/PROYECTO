@@ -5,10 +5,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Layout from '../layout/Layout';
 import Home from '../pages/Home';
-import Lista from '../components/Lista';
-import DatosPersonales from '../components/DatosPersonales';
-import Tabla_p from '../components/Tabla_p';
-import Agregar_P from '../components/agregar_p';
+import Lista from '../components/web/Lista';
+import DatosPersonales from '../components/web/DatosPersonales';
+import Tabla_p from '../components/web/Tabla_p';
+import Agregar_P from '../components/web/agregar_p';
 
 export default function Rutas() {
   return (
@@ -16,7 +16,7 @@ export default function Rutas() {
       
         <Routes>
         
-          <Route path='/' element={<Home />} />
+          
           <Route path='/lista' element={<Lista />} />
           <Route path='/datos' element={<DatosPersonales />} />
           <Route path='/datos/:id' element={<DatosPersonales />} />

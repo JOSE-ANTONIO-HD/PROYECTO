@@ -3,11 +3,11 @@ import { ENV } from "../utils";
 export class Auth{
     baseApi= ENV.BASE_API;
 
-    async login(data){
+    async Login(data){
         try {
             const url=`${this.baseApi}/${ENV.API_ROUTES.LOGIN}`;
             const params={
-                methods:"POST",
+                method:"POST",
                 Headers:{
                     "Content-Type":"application/json"
                 },
@@ -58,15 +58,15 @@ export class Auth{
         return localStorage.getItem(ENV.JWT.ACCESS)
     }
 
-    setRefressToken(token){
+    setRefreshToken(token){
         localStorage.setItem(ENV.JWT.REFRESH, token);
     }
-    getRefresToken(){
-        return localStorage.getItem(ENV.JWT.REFRESH                                                                                                                                                                                                                                               )
+    getRefreshToken(){
+        return localStorage.getItem(ENV.JWT.REFRESH)
     }
 
     removeToken(){
         localStorage.removeItem(ENV.JWT.ACCESS);
-        localStorage.refreshToken(ENV.JWT.REFRESH);
+        localStorage.removeItem(ENV.JWT.REFRESH);
     }
 }

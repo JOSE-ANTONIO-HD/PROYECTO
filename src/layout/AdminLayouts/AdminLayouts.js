@@ -20,6 +20,8 @@ export  function AdminLayouts({children}) {
           <div className='section'>
             <BarraMenu />
           </div>
+
+          
           
         </div>
       </div>

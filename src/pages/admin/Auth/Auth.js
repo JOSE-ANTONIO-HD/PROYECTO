@@ -1,5 +1,5 @@
 import React from 'react';
-import {Login} from "../../../components/Admin/Auth"
+import {Login} from "../../../components/Admin/Auth";
 import {Card} from "react-bootstrap";
 import './Auth.scss'
 
