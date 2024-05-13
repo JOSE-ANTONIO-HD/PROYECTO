@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Form, FloatingLabel, Button, Row, InputGroup, Alert } from "react-bootstrap";
+import { Form, FloatingLabel, Button, Row, InputGroup, Alert, Container } from "react-bootstrap";
 import { useFormik } from "formik";
 import Axios from '../../../../services/Axios';
 import { useNavigate } from "react-router-dom";
 import { Register } from './Register'; // Ajusta la ruta según la ubicación real de Register
-
 
 export function Login() {
   const [error, setError] = useState(null);
@@ -40,15 +39,15 @@ export function Login() {
   };
 
   return (
-    <>
-      {showRegister ? (
-        <Register onRegisterSuccess={handleRegisterSuccess} />
-      ) : (
-        <div>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form noValidate onSubmit={formik.handleSubmit}>
-            <Row className='mb-3'>
-              <InputGroup>
+    <Container className="mt-5">
+      <Row className="justify-content-md-center">
+        <div className="col-md-6">
+          {showRegister ? (
+            <Register onRegisterSuccess={handleRegisterSuccess} />
+          ) : (
+            <div>
+              {error && <Alert variant="danger">{error}</Alert>}
+              <Form noValidate onSubmit={formik.handleSubmit}>
                 <FloatingLabel controlId='floatingInput' label="Correo" className='mb-3'>
                   <Form.Control
                     type="email"
@@ -59,9 +58,6 @@ export function Login() {
                     required
                   />
                 </FloatingLabel>
-              </InputGroup>
-
-              <InputGroup>
                 <FloatingLabel controlId='floatingInput' label="Contraseña" className='mb-3'>
                   <Form.Control
                     type="password"
@@ -71,18 +67,15 @@ export function Login() {
                     required
                   />
                 </FloatingLabel>
-              </InputGroup>
-            </Row>
-
-            <Form.Group>
-              <div className='d-grid gap-2'>
-                <Button type='submit' size='lg'>Enviar</Button>
-                <Button variant="secondary" onClick={handleRegisterClick} size='lg'>Registrarse</Button>
-              </div>
-            </Form.Group>
-          </Form>
+                <div className='d-grid gap-2'>
+                  <Button type='submit' size='lg'>Enviar</Button>
+                  <Button variant="secondary" onClick={handleRegisterClick} size='lg'>Registrarse</Button>
+                </div>
+              </Form>
+            </div>
+          )}
         </div>
-      )}
-    </>
+      </Row>
+    </Container>
   )
 }

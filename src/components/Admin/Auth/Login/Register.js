@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import Axios from "../../../../services/Axios";
 import { useNavigate } from 'react-router-dom';
 
-export function Register() {
+export  function Register() {
   const [registrationMessage, setRegistrationMessage] = useState(null);
 
   const navigate = useNavigate();
@@ -97,7 +97,7 @@ export function Register() {
         <Form.Group>
           <div className='d-grid gap-2'>
             <Button type='submit' size='lg'>Registrarse</Button>
-            <Button variant="secondary" size='lg' onClick={() => navigate("/admin")}>Volver al inicio de sesión</Button>
+            <Button variant="secondary" size='lg' onClick={() => { navigate("/"); window.location.reload(); }}>Volver al inicio de sesión</Button>
           </div>
         </Form.Group>
       </Form>

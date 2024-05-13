@@ -16,6 +16,8 @@ export default function Barravertical({ backgroundColor }) {
               Search
             </button>
           </form>
+          {/* Botón para ir a la ruta "/" */}
+          <Link to="/" className="btn btn-primary ms-2">CERRAR SESION</Link>
         </div>
       </div>
     </nav>
