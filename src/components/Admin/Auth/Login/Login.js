@@ -4,6 +4,7 @@ import { useFormik } from "formik";
 import Axios from '../../../../services/Axios';
 import { useNavigate } from "react-router-dom";
 import { Register } from './Register'; // Ajusta la ruta según la ubicación real de Register
+import './Login.css';
 
 export function Login() {
   const [error, setError] = useState(null);
@@ -21,7 +22,7 @@ export function Login() {
         console.log(formValues);
         console.log(response.data);
         // Redirigir al usuario a la página principal del administrador
-        navigate('/lista');
+        navigate('/inicio');
       } catch (error) {
         setError("Error al iniciar sesión. Verifica tus credenciales.");
         console.error(error);
@@ -42,38 +43,41 @@ export function Login() {
     <Container className="mt-5">
       <Row className="justify-content-md-center">
         <div className="col-md-6">
-          {showRegister ? (
-            <Register onRegisterSuccess={handleRegisterSuccess} />
-          ) : (
-            <div>
-              {error && <Alert variant="danger">{error}</Alert>}
-              <Form noValidate onSubmit={formik.handleSubmit}>
-                <FloatingLabel controlId='floatingInput' label="Correo" className='mb-3'>
-                  <Form.Control
-                    type="email"
-                    name="email"
-                    placeholder='nombre@ejemplo.com'
-                    onChange={formik.handleChange}
-                    value={formik.values.email}
-                    required
-                  />
-                </FloatingLabel>
-                <FloatingLabel controlId='floatingInput' label="Contraseña" className='mb-3'>
-                  <Form.Control
-                    type="password"
-                    name="password"
-                    onChange={formik.handleChange}
-                    value={formik.values.password}
-                    required
-                  />
-                </FloatingLabel>
-                <div className='d-grid gap-2'>
-                  <Button type='submit' size='lg'>Enviar</Button>
-                  <Button variant="secondary" onClick={handleRegisterClick} size='lg'>Registrarse</Button>
-                </div>
-              </Form>
-            </div>
-          )}
+          <div className="login-form-border"> {/* Agregar un div con clase "login-form-border" */}
+            <h1 className='text-center mb-4'>BIENVENIDO A INVENTAX</h1>
+            {showRegister ? (
+              <Register onRegisterSuccess={handleRegisterSuccess} />
+            ) : (
+              <div>
+                {error && <Alert variant="danger">{error}</Alert>}
+                <Form noValidate onSubmit={formik.handleSubmit}>
+                  <FloatingLabel controlId='floatingInput' label="Correo" className='mb-3'>
+                    <Form.Control
+                      type="email"
+                      name="email"
+                      placeholder='nombre@ejemplo.com'
+                      onChange={formik.handleChange}
+                      value={formik.values.email}
+                      required
+                    />
+                  </FloatingLabel>
+                  <FloatingLabel controlId='floatingInput' label="Contraseña" className='mb-3'>
+                    <Form.Control
+                      type="password"
+                      name="password"
+                      onChange={formik.handleChange}
+                      value={formik.values.password}
+                      required
+                    />
+                  </FloatingLabel>
+                  <div className='d-grid gap-2'>
+                    <Button type='submit' size='lg'>Enviar</Button>
+                    <Button variant="secondary" onClick={handleRegisterClick} size='lg'>Registrarse</Button>
+                  </div>
+                </Form>
+              </div>
+            )}
+          </div>
         </div>
       </Row>
     </Container>

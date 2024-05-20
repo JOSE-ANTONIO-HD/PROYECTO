@@ -1,0 +1,7 @@
+.login-form-border {
+    border: 2px solid #007bff; /* Define el grosor y el color del borde */
+    padding: 20px; /* Agrega espacio interno para separar el contenido del borde */
+    border-radius: 10px; /* Agrega bordes redondeados */
+  }
+
+  

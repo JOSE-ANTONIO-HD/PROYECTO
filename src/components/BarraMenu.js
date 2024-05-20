@@ -12,19 +12,24 @@ export default function BarraMenu({ backgroundColor }) {
     width: '200px', // Establece el ancho de la barra de navegación
     padding: '20px', // Añade espacio interno a la barra de navegación
     zIndex: 1000, // Asegura que la barra de navegación esté por encima de otros elementos en la página
-   
   };
   const textColorStyle = {
     color: 'white',
   };
 
+  // Estilo para el texto "INVENTAX"
+  const inventaxStyle = {
+    fontSize: '24px', // Tamaño de fuente más grande
+    fontWeight: 'bold', // Texto en negrita
+    marginBottom: '20px', // Espacio inferior para separar del resto del contenido
+  };
+
   return (
     <nav style={barraMenuStyle}>
-      <a className="navbar-brand mb-3" href="#" style={textColorStyle}>INVENTAX</a>
+      <a className="navbar-brand mb-3" href="#" style={{ ...textColorStyle, ...inventaxStyle }}>INVENTAX</a>
       
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-
-      <li className="nav-item">
+        <li className="nav-item">
           <Link className="nav-link" to="/inicio" style={textColorStyle}>INICIO</Link>
         </li>
         
