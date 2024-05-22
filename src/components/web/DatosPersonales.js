@@ -1,3 +1,4 @@
+//DatosPersonas
 import React, { useState, useEffect } from "react";
 import Axios from "../../services/Axios";
 import { Link } from "react-router-dom";
@@ -8,7 +9,6 @@ export default function DatosPersonales() {
     producto: "",
     cantidad: "",
     precio_unitario: "",
-    proveedor: "",
   };
 
   const [datos, setDatos] = useState(valores);
@@ -118,19 +118,7 @@ export default function DatosPersonales() {
             />
           </div>
 
-          <div className="col-md-12">
-            <input
-              type="number"
-              name="proveedor"
-              className="form-control"
-              id="validationCustom04"
-              placeholder="proveedor"
-              value={datos.nombre}
-              onChange={onChange}
-              required
-            />
-          </div>
-
+         
           <div className="d-grid gap-2 d-md-flex justify-content-md-end">
             <button className="btn btn-primary me-md-2" type="submit">
               Enviar

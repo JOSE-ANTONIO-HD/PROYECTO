@@ -7,7 +7,6 @@ import "./styles.css";
 export default function Agregar_P() {
   const valores = {
     nombre: "",
-    proveedor: "",
     correo: "",
     telefono: "",
   };
