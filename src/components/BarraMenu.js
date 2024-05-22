@@ -39,25 +39,9 @@ export default function BarraMenu({ backgroundColor }) {
         <li className="nav-item">
           <Link className="nav-link" to="/Tabla_p" style={textColorStyle}>PROVEEDOR</Link>
         </li>
-        <li className="nav-item dropdown">
-          <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={textColorStyle}>
-            Formularios
-          </Link>
-          <ul className="dropdown-menu">
-            <li><Link className="dropdown-item" to='/'>Datos Personales</Link></li>
-            <li><Link className="dropdown-item" to="/">Lista personal</Link></li>
-            <li><hr className="dropdown-divider"/></li>
-            <li><a className="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link disabled" aria-disabled="true" style={textColorStyle}>Disabled</a>
-        </li>
+        
+        
       </ul>
-      <form className="d-flex flex-column" role="search">
-        <input className="form-control me-2 mb-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button className="btn btn-outline-success" type="submit" style={textColorStyle}>Search</button>
-      </form>
     </nav>
   );
 }
